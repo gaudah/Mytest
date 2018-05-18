@@ -1,0 +1,57 @@
+CREATE TABLE address (loginid text,addr text);
+CREATE TABLE delivery1 (loginid text,choice text,qty text) with oids;
+
+CREATE TABLE signup (
+    s1 text primary key,s2 text,s3 text,s4 text
+);
+CREATE TABLE login(
+    s1 text references signup(s1),s2 text                
+);
+CREATE TABLE recommend1 (
+    prodname text,                             
+    i1 text primary key
+); 
+CREATE TABLE prod1 (img1 text references recommend1(i1),pname text,descri text,feature text,stock_or_not text, price text,sold_by text,qty text );
+CREATE TABLE wishlist (
+    s1 text references recommend1(i1),
+    s2 text,
+    s3 text
+);
+CREATE TABLE cart (img1 text references recommend1(i1),qty text,price text);
+create table temporary(ss text);
+insert into recommend1 values ('screen size of standard mobile phone','https://images-eu.ssl-images-amazon.com/images/I/51PNrivlpyL._AC_US218_.jpg');
+insert into recommend1 values ('aluminium mobile phone','https://images-eu.ssl-images-amazon.com/images/I/41pNlIfv9ZL._AC_US218_.jpg');
+insert into recommend1 values ('Mobile phone water proof protection','https://images-eu.ssl-images-amazon.com/images/I/41Ujq1xBLmL._AC_US218_.jpg');
+insert into recommend1 values ('Mobile phone dustproof protection','https://images-eu.ssl-images-amazon.com/images/I/51+XNEwMARL._AC_US218_.jpg');
+insert into recommend1 values ('Mobile phone protection','https://images-eu.ssl-images-amazon.com/images/I/41cHiKcJG6L._AC_US218_.jpg');
+insert into recommend1 values ('Mobile dualsim','https://images-eu.ssl-images-amazon.com/images/I/41INpKtZV-L._AC_US160_.jpg');
+insert into recommend1 values ('Mobiles','https://images-na.ssl-images-amazon.com/images/I/71N5hSP49AL._SY679_.jpg');
+insert into recommend1 values ('https://images-na.ssl-images-amazon.com/images/I/71N5hSP49AL._SY679_.jpg','Mobiles');
+delete from recommend1 where i1='Mobiles';
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/51PNrivlpyL._AC_US218_.jpg','screen size of standard mobile phone','abc','xyz','instock','117','mr.ram',2);
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/41pNlIfv9ZL._AC_US218_.jpg','aluminium mobile phone','pqr','ttt','instock','77','mr.sham',4);
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/41Ujq1xBLmL._AC_US218_.jpg','Mobile phone water proof protection','efg','rrr','instock','51','mr.am',5);
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/51+XNEwMARL._AC_US218_.jpg','Mobile phone dustproof protection','wsw','yyy','instock','111','mr.kunal',7);
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/41cHiKcJG6L._AC_US218_.jpg','Mobile phone protection','rst','uuu','instock','117','mr.nakul',4);
+
+delete from prod1 where img1=' https://images-eu.ssl-images-amazon.com/images/I/41INpKtZV-L._AC_US160_.jpg';
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/51+XNEwMARL._AC_US218_.jpg','Mobile phone dustproof protection','wsw','yyy','instock','111','mr.kunal',7);
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/51+XNEwMARL._AC_US218_.jpg','Mobile phone dustproof protection','qqq','eee','instock','717','mr.kunal','7');
+insert into prod1 values('https://images-eu.ssl-images-amazon.com/images/I/41cHiKcJG6L._AC_US218_.jpg','Mobile phone protection','rst','uuu','instock','117','mr.nakul','5');
+
+insert into prod1 values('https://images-na.ssl-images-amazon.com/images/I/71N5hSP49AL._SY679_.jpg','Mobiles','zzz','yyy','ouofstock','151','mr.yash','6');
+
+insert into signup values ('kunal17','gaud17','kunal@gmail.com','9876876789');
+insert into signup values('aishu','gaud','aishu@gmail.com','8764567231');
+insert into signup values('minal','chavan','minu@gmail.com','8754665432');
+insert into signup values('amol','asc','amol@gmail.com','8723665432');
+
+
+insert into login values ('kunal17','gaud17');
+insert into login values('aishu','gaud');
+insert into login values('minal','chavan');
+
+
+insert into address values('kunal17','saraswati colony ward no. 7 shrirampur');
+insert into address values('aishu','ganesh colony ward no. 5 pune');
+insert into address values('minal','ganesh colony ward no. 17 jalgaon');
